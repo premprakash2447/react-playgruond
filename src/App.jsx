@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import DataList from './components/DataList'
+import FormikForm from './components/formik/FormikForm'
 
 // function App() {
   // const [count, setCount] = useState(0)
@@ -36,7 +37,8 @@ import DataList from './components/DataList'
 const App = () => {
   return (
     <div className='app'>
-      <DataList />
+      {/* <DataList /> */}
+      <FormikForm />
     </div>
   )
 }
