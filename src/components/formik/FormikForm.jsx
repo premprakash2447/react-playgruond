@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -28,6 +28,7 @@ import * as Yup from 'yup';
 // };
 
 const FormikForm = () => {
+  const [hideField, setHideField] = useState(false)
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -44,7 +45,8 @@ const FormikForm = () => {
        email: Yup.string().email('Invalid email address').required('Required'),
      }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      // alert(JSON.stringify(values, null, 2));
+      setHideField(true)
     },
   });
   return (
@@ -88,6 +90,19 @@ const FormikForm = () => {
         <div>{formik.errors.email}</div>
       ) : null}
 
+      {hideField ? (
+        <>
+        <label htmlFor="otp">User OTP</label>
+        <input
+        id="otp"
+        name="otp"
+        type="text"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.otp}
+      />
+      </>
+      ) : null}
       <button type="submit">Submit</button>
     </form>
   );
